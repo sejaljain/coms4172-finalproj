@@ -20,6 +20,7 @@ namespace GoogleVR.HelloVR
 {
     using UnityEngine;
     using UnityEngine.EventSystems;
+    using UnityEngine.UI;
 
     /// <summary>Controls interactable teleporting objects in the Demo scene.</summary>
     [RequireComponent(typeof(Collider))]
@@ -28,12 +29,15 @@ namespace GoogleVR.HelloVR
         /// <summary>
         /// The material to use when this object is inactive (not being gazed at).
         /// </summary>
-        public Material inactiveMaterial;
-
-        /// <summary>The material to use when this object is active (gazed at).</summary>
         public Material gazedAtMaterial;
 
+        /// <summary>The material to use when this object is active (gazed at).</summary>
+        public Material inactiveMaterial;
+
         private Vector3 startingPosition;
+
+        //private GameObject panel;
+
         private Renderer myRenderer;
 
         /// <summary>Sets this instance's GazedAt state.</summary>
@@ -42,9 +46,12 @@ namespace GoogleVR.HelloVR
         /// </param>
         public void SetGazedAt(bool gazedAt)
         {
+            Text txt;
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;
+                txt = GameObject.Find("PlantInfo").GetComponent<Text>();
+                txt.text = "hello";
                 return;
             }
         }
@@ -75,46 +82,58 @@ namespace GoogleVR.HelloVR
 #endif  // !UNITY_EDITOR
         }
 
+
+
+        public void PanelAppear(BaseEventData eventData)
+        {
+           
+            GameObject.FindGameObjectWithTag("Button").SetActive(true);
+           
+        }
+
+
+
+
         /// <summary>Teleport this instance randomly when triggered by a pointer click.</summary>
         /// <param name="eventData">The pointer click event which triggered this call.</param>
-        public void TeleportRandomly(BaseEventData eventData)
-        {
-            // Only trigger on left input button, which maps to
-            // Daydream controller TouchPadButton and Trigger buttons.
-            PointerEventData ped = eventData as PointerEventData;
-            if (ped != null)
-            {
-                if (ped.button != PointerEventData.InputButton.Left)
-                {
-                    return;
-                }
-            }
+        //public void TeleportRandomly(BaseEventData eventData)
+        //{
+        //    // Only trigger on left input button, which maps to
+        //    // Daydream controller TouchPadButton and Trigger buttons.
+        //    PointerEventData ped = eventData as PointerEventData;
+        //    if (ped != null)
+        //    {
+        //        if (ped.button != PointerEventData.InputButton.Left)
+        //        {
+        //            return;
+        //        }
+        //    }
 
-            // Pick a random sibling, move them somewhere random, activate them,
-            // deactivate ourself.
-            int sibIdx = transform.GetSiblingIndex();
-            int numSibs = transform.parent.childCount;
-            sibIdx = (sibIdx + Random.Range(1, numSibs)) % numSibs;
-            GameObject randomSib = transform.parent.GetChild(sibIdx).gameObject;
+        //    // Pick a random sibling, move them somewhere random, activate them,
+        //    // deactivate ourself.
+        //    int sibIdx = transform.GetSiblingIndex();
+        //    int numSibs = transform.parent.childCount;
+        //    sibIdx = (sibIdx + Random.Range(1, numSibs)) % numSibs;
+        //    GameObject randomSib = transform.parent.GetChild(sibIdx).gameObject;
 
-            // Move to random new location ±90˚ horzontal.
-            Vector3 direction = Quaternion.Euler(
-                0,
-                Random.Range(-90, 90),
-                0) * Vector3.forward;
+        //    // Move to random new location ±90˚ horzontal.
+        //    Vector3 direction = Quaternion.Euler(
+        //        0,
+        //        Random.Range(-90, 90),
+        //        0) * Vector3.forward;
 
-            // New location between 1.5m and 3.5m.
-            float distance = (2 * Random.value) + 1.5f;
-            Vector3 newPos = direction * distance;
+        //    // New location between 1.5m and 3.5m.
+        //    float distance = (2 * Random.value) + 1.5f;
+        //    Vector3 newPos = direction * distance;
 
-            // Limit vertical position to be fully in the room.
-            newPos.y = Mathf.Clamp(newPos.y, -1.2f, 4f);
-            randomSib.transform.localPosition = newPos;
+        //    // Limit vertical position to be fully in the room.
+        //    newPos.y = Mathf.Clamp(newPos.y, -1.2f, 4f);
+        //    randomSib.transform.localPosition = newPos;
 
-            randomSib.SetActive(true);
-            gameObject.SetActive(false);
-            SetGazedAt(false);
-        }
+        //    randomSib.SetActive(true);
+        //    gameObject.SetActive(false);
+        //    SetGazedAt(false);
+        //}
 
         private void Start()
         {

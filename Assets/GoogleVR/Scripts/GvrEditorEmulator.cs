@@ -229,7 +229,7 @@ public class GvrEditorEmulator : MonoBehaviour
             Camera cam = allCameras[i];
 
             // Check if the Camera is a valid VR Camera, and if so update it to track head motion.
-            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None)
+            if (cam && cam.enabled && cam.stereoTargetEye != StereoTargetEyeMask.None && (cam.tag != "minimap"))
             {
                 cam.transform.localPosition = HeadPosition * cam.transform.lossyScale.y;
                 cam.transform.localRotation = HeadRotation;
@@ -255,7 +255,16 @@ public class GvrEditorEmulator : MonoBehaviour
         // The GetAllCameras method doesn't allocate memory (Camera.allCameras does).
         Camera.GetAllCameras(allCameras);
 
-       // allCameras.RemoveAll(c => c.tag == "minimap");
+        /*
+        for (int i = 0; i < allCameras.Length; i++)
+        {
+            Camera c = allCameras[i];
+            if (c.tag == "minimap")
+            {
+                allCameras[i] = null;
+            }
+        }
+        */
     }
 
 #endif  // UNITY_EDITOR

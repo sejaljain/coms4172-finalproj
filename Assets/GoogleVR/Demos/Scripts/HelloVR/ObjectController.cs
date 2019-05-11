@@ -48,6 +48,7 @@ namespace GoogleVR.HelloVR
         private string plantName;
         private string ScoreNum;
         private int scoreTotal = 0;
+        private double totalPounds = 0.00;
 
         public string GetPlantCals(string plant)
         {
@@ -145,7 +146,9 @@ namespace GoogleVR.HelloVR
         public void UpdateScore()
         {
             scoreTotal += Int32.Parse(GetScoreNum(gameObject.name));
+            totalPounds += 0.22;
             GameObject.Find("Score").GetComponent<Text>().text = String.Concat("Calories Captured: ", scoreTotal.ToString());
+            GameObject.Find("Pounds").GetComponent<Text>().text = String.Concat("Pounds of Food: ", totalPounds.ToString());
         }
 
         private void Start()

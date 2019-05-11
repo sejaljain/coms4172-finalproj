@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Hotspot : MonoBehaviour
+public class Hotspot : MonoBehaviour, IGvrPointerHoverHandler
 {
-    // Start is called before the first frame update
 
-    public GameObject player;
+    private GameObject player;
+    private Renderer rend;
+    public Material regular;
+    public Material hoverOver;
     void Start()
     {
-        
+        rend = this.GetComponent<Renderer>();
+        rend.material = regular;
+        player = GameObject.FindWithTag("player");
     }
 
     // Update is called once per frame
@@ -18,11 +23,35 @@ public class Hotspot : MonoBehaviour
 
     }
 
-    public void moveToHotspot()
+
+    public void OnGvrPointerHover(PointerEventData data)
     {
 
-        player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("mouse button down");
+            GameObject hotspot = data.pointerCurrentRaycast.gameObject;
+            //Debug.Log(hotspot.transform.position);
+            player.transform.localPosition = hotspot.transform.position;
+            //Debug.Log(player.transform.position);
+        }
     }
+
+
+    public void onHotspotHoverEnter()
+    {
+        Debug.Log("pointer enter");
+        rend.material = hoverOver;
+    }
+
+
+    public void onHotspotHoverExit()
+    {
+        Debug.Log("pointer exit");
+        rend.material = regular;
+    }
+
+
+
 
 }

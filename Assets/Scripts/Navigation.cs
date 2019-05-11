@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Navigation : MonoBehaviour
 {
-    public Vector3 lastPosition;
     public Camera main_cam;
+    private GvrPointerPhysicsRaycaster raycaster;
+    private GvrPointerInputModule pointer_module;
     // Start is called before the first frame update
     void Start()
     {
-        lastPosition = transform.position;
 
         
     }
@@ -17,7 +17,7 @@ public class Navigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(transform.position);
     }
 
 

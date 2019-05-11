@@ -254,6 +254,8 @@ public class GvrEditorEmulator : MonoBehaviour
 
         // The GetAllCameras method doesn't allocate memory (Camera.allCameras does).
         Camera.GetAllCameras(allCameras);
+
+       // allCameras.RemoveAll(c => c.tag == "minimap");
     }
 
 #endif  // UNITY_EDITOR

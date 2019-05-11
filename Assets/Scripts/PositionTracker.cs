@@ -30,4 +30,5 @@
             vrCamera.transform.localPosition = UnityARMatrixOps.GetPosition(matrix);
         }
     }
+
 }

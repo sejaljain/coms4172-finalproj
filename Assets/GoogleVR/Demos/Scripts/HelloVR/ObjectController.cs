@@ -21,6 +21,10 @@ namespace GoogleVR.HelloVR
     using UnityEngine;
     using UnityEngine.EventSystems;
     using UnityEngine.UI;
+    using System.IO;
+    using System.Linq;
+    using System.Collections.Generic;
+    using System;
 
     /// <summary>Controls interactable teleporting objects in the Demo scene.</summary>
     [RequireComponent(typeof(Collider))]
@@ -40,19 +44,74 @@ namespace GoogleVR.HelloVR
 
         private Renderer myRenderer;
 
+        private string plantCals;
+        private string plantName;
+        private string ScoreNum;
+        private int scoreTotal = 0;
+
+        public string GetPlantCals(string plant)
+        {
+            string path = "Assets/plantDatabase.txt";
+            StreamReader reader = new StreamReader(path);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                List<string> info = line.Split(',').ToList<string>();
+                if (plant.Contains(info[0]))
+                {
+                    plantCals = info[1];
+                }
+            }
+            return plantCals;
+        }
+
+
+        public string GetPlantName(string plant)
+        {
+            string path = "Assets/plantDatabase.txt";
+            StreamReader reader = new StreamReader(path);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                List<string> info = line.Split(',').ToList<string>();
+                if (plant.Contains(info[0]))
+                {
+                    plantName = info[0];
+                }
+            }
+            return plantName;
+        }
+
+        public string GetScoreNum(string plant)
+        {
+            string path = "Assets/plantDatabase.txt";
+            StreamReader reader = new StreamReader(path);
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                List<string> info = line.Split(',').ToList<string>();
+                if (plant.Contains(info[0]))
+                {
+                    ScoreNum = info[2];
+                }
+            }
+            return ScoreNum;
+        }
+
+
+
         /// <summary>Sets this instance's GazedAt state.</summary>
         /// <param name="gazedAt">
         /// Value `true` if this object is being gazed at, `false` otherwise.
         /// </param>
         public void SetGazedAt(bool gazedAt)
         {
-            Text txt;
+
             if (inactiveMaterial != null && gazedAtMaterial != null)
             {
                 myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;
-                txt = GameObject.Find("PlantInfo").GetComponent<Text>();
-                txt.text = "hello";
-                return;
+                GameObject.Find("PlantInfo").GetComponent<Text>().text = gazedAt ? GetPlantCals(gameObject.name) : "";
+                GameObject.Find("PlantName").GetComponent<Text>().text = gazedAt ? GetPlantName(gameObject.name) : "";
             }
         }
 
@@ -83,57 +142,11 @@ namespace GoogleVR.HelloVR
         }
 
 
-
-        public void PanelAppear(BaseEventData eventData)
+        public void UpdateScore()
         {
-           
-            GameObject.FindGameObjectWithTag("Button").SetActive(true);
-           
+            scoreTotal += Int32.Parse(GetScoreNum(gameObject.name));
+            GameObject.Find("Score").GetComponent<Text>().text = String.Concat("Calories Captured: ", scoreTotal.ToString());
         }
-
-
-
-
-        /// <summary>Teleport this instance randomly when triggered by a pointer click.</summary>
-        /// <param name="eventData">The pointer click event which triggered this call.</param>
-        //public void TeleportRandomly(BaseEventData eventData)
-        //{
-        //    // Only trigger on left input button, which maps to
-        //    // Daydream controller TouchPadButton and Trigger buttons.
-        //    PointerEventData ped = eventData as PointerEventData;
-        //    if (ped != null)
-        //    {
-        //        if (ped.button != PointerEventData.InputButton.Left)
-        //        {
-        //            return;
-        //        }
-        //    }
-
-        //    // Pick a random sibling, move them somewhere random, activate them,
-        //    // deactivate ourself.
-        //    int sibIdx = transform.GetSiblingIndex();
-        //    int numSibs = transform.parent.childCount;
-        //    sibIdx = (sibIdx + Random.Range(1, numSibs)) % numSibs;
-        //    GameObject randomSib = transform.parent.GetChild(sibIdx).gameObject;
-
-        //    // Move to random new location ±90˚ horzontal.
-        //    Vector3 direction = Quaternion.Euler(
-        //        0,
-        //        Random.Range(-90, 90),
-        //        0) * Vector3.forward;
-
-        //    // New location between 1.5m and 3.5m.
-        //    float distance = (2 * Random.value) + 1.5f;
-        //    Vector3 newPos = direction * distance;
-
-        //    // Limit vertical position to be fully in the room.
-        //    newPos.y = Mathf.Clamp(newPos.y, -1.2f, 4f);
-        //    randomSib.transform.localPosition = newPos;
-
-        //    randomSib.SetActive(true);
-        //    gameObject.SetActive(false);
-        //    SetGazedAt(false);
-        //}
 
         private void Start()
         {

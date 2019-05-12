@@ -1,0 +1,6 @@
+Tomato,18 Calories (per 100 g),18
+Corn,86 Calories (per 100 g),86
+Turnip,28 Calories (per 100 g),28
+Carrot,41 Calories (per 100 g),41
+Eggplant,24 Calories (per 100 g),24
+Pumpkin,25 Calories (per 100g),25

@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,5 +13,5 @@ MonoBehaviour:
   m_Name: UnityLogoReferenceImage
   m_EditorClassIdentifier: 
   imageName: unitylogoreferenceimage
-  imageTexture: {fileID: 2800000, guid: fd3329f8ed29741c29b3bf4b0032cab9, type: 3}
+  imageTexture: {fileID: 2800000, guid: 85b45890b23844ccfa667d655623c087, type: 3}
   physicalSize: 0.06

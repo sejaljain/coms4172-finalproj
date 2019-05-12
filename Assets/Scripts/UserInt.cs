@@ -8,14 +8,16 @@ public class UserInt : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         camera = Camera.main;
+        camera = Camera.main;
+        //transform.SetPositionAndRotation
     }
 
     // Update is called once per frame
     public void Update()
     {
     
-        transform.LookAt(camera.transform, camera.transform.rotation * Vector3.up);
+        //transform.LookAt(camera.transform, camera.transform.rotation * Vector3.up);
+        //transform.SetPositionAndRotation
 
     }
 }

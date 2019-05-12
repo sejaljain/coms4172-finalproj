@@ -7,21 +7,17 @@ public class GameController : MonoBehaviour
 
   private Dictionary<HandController.HandAction, string[]> helpTextDict;
   public GameObject[] components;
-  public GameObject Toolbar;
+  public GameObject Hand;
   public GameObject MachineBase;
   private HandController handController;
-  public float ScalingFactor { get; set; }
-  public float RotationFactor { get; set; }
-  public float TranslationFactor { get; set; }
 
 
   // Start is called before the first frame update
   void Start()
   {
     helpTextDict = new Dictionary<HandController.HandAction, string[]>();
-    ScalingFactor = 20f;
-    RotationFactor = 1f;
-    handController = Toolbar.GetComponent<HandController>();
+
+    handController = Hand.GetComponent<HandController>();
   }
 
   private void HandleTouch()
@@ -46,17 +42,26 @@ public class GameController : MonoBehaviour
   private void SelectAction()
   {
 
-    HandController.HandAction toolbarMode = handController.Mode;
-    switch (toolbarMode)
+    HandController.HandAction handMode = handController.Mode;
+    switch (handMode)
     {
-
+      case HandController.HandAction.Select:
+        handController.Attach();
+        break;
+      case HandController.HandAction.Attach:
+        handController.Detach();
+        break;
+      case HandController.HandAction.Scale:
+      case HandController.HandAction.Rotate:
+        handController.EndSelection();
+        break;
     }
   }
 
   void SpawnObject(int element)
   {
     Quaternion spawnRotation = new Quaternion();
-    Vector3 spawnPosition = Toolbar.transform.position;
+    Vector3 spawnPosition = Hand.transform.position;
     Instantiate(components[element], spawnPosition, spawnRotation, MachineBase.transform);
     Debug.Log("Object spawned");
 

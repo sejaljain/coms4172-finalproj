@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
-  public enum HandAction { Default, Select, Attach, Translate, Rotate, Scale, TranslatePause, RotatePause, ScalePause }
+  public enum HandAction { Default, Select, Attach, Rotate, Scale }
   private GameController gameController;
   private Vector3 lastPosition;
   private Quaternion lastRotation;
@@ -12,8 +12,8 @@ public class HandController : MonoBehaviour
   private Color selectColor;
   private Color highlightColor;
 
-  private float ScalingFactor;
-  private float RotationFactor;
+  private float scalingFactor;
+  private float rotationFactor;
   private GameObject activeObject;
   public GameObject machineBaseTarget;
   public GameObject ActiveObject
@@ -40,8 +40,8 @@ public class HandController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    ScalingFactor = 20f;
-    RotationFactor = 1f;
+    scalingFactor = 20f;
+    rotationFactor = 1f;
     mode = HandAction.Default;
     lastPosition = transform.position;
     lastRotation = transform.rotation;
@@ -68,9 +68,6 @@ public class HandController : MonoBehaviour
     {
       switch (Mode)
       {
-        case HandAction.Translate:
-          TranslateObject();
-          break;
         case HandAction.Rotate:
           RotateObject();
           break;
@@ -79,7 +76,6 @@ public class HandController : MonoBehaviour
           break;
       }
     }
-
     lastPosition = transform.position;
   }
 
@@ -104,7 +100,7 @@ public class HandController : MonoBehaviour
 
     if (Mathf.Abs(transform.position.y - lastPosition.y) > deltaThreshold)
     {
-      float deltaSize = Mathf.Min(Mathf.Max(1 + (transform.position.y - lastPosition.y) * this.scalingFactor, 0.2f), 4f);
+      float deltaSize = Mathf.Min(Mathf.Max(1 + (transform.position.y - lastPosition.y) * scalingFactor, 0.2f), 4f);
       activeObject.transform.localScale *= deltaSize;
     }
 

@@ -7,6 +7,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 
+[iI]OS/
+.DS_Store
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 

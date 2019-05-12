@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: AeB8g/n/////AAABmVRQcocrNERel4DsujKGFeQ1yBBeLfbRZzcE3fcQLcXiR2ZcjfDJGtFM6eUnw1R7QN2VMNLpK4ZsWdQZKPWxeooPcCTkFKO/ngMxRBxmpQawCin8gfH23kHegStowLLBPBZ68pXnqcDqmOqUh8rDgIVozN3YV4IZEiwR0ColkVqwAjTZ5TPgjgG6E2PIVg62oXJSCOb4u5il9fVwEMn2uQT2EsuZTI2rzgZNq7upDkU2f2MvvFbgBWBAg6+M2qbplPdLJk9b+NdxaI6iWEv2ujYz8KBvn3OrFqM2NZTKUacqpqjSVyBh19QJHFoEbjweJciujoh5S9mx0XdPXUnKeGuk55/DuMz2YnLr+CcV9972
-    ufoLicenseKey: QWEvaWd0ei8vLy8vQUFBQUtIZmxXUU4zOGtmUW92ZDZLOVkwakIxTHVpMEZVa3ZEeis5NWdpbmNPb0Z0L3Z1QndQZVVMUmN6WjAzbG1jejdVVmNCaUlWekxROFBvS0FEUm4wZ2JHWVZCSG1FZndwRnN3aHAxOXJYYXkvdG1ySDNyQlc4V3c4WEhXZU1Ed2NnSjBINWE0eFk4NEFDUGVtc3kzY1gxMHBxRUZNS3A3QXJtcmp5a1Y3eG5zRmt0dlRtcVhseWlZUUV6MEExdjlzdlNaOUwxNGpyVERleGpQOW1hZUNDYW5IakNsT1hoUE5lMzNhOTJweW1GMTVKbDc1V1Y5Q25WMitkTy9rN1ZHS3dnUDVNaVZFZ05BOWhuOXp6UzNYdnhzWHJ3cXpsbjV1L0RWaHU4bzNsOEJmaGlRendNOHM5cE4xcGRUbitqcHdtakYvSmlQU3ZXSG5nUGZ4MythQ3BaUG1wRFlrbWtzNDl6VzUvYTd4UG9waTU=
+    vuforiaLicenseKey: 
+    ufoLicenseKey: QVdzVHRvVC8vLy8vQUFBQUtNMFRwNERQVFVlM2lmRDBqMFFEWXNBZGxyakVheHRKMzMveURzRWNzQkZsc1A4YVdNR0pkTUlicWdydFAxeWpFQUoxa3VRZTl2Y2JqUTgxRDRkZkUwSmpOck1JeG5iN091U0hPaWZDWDJ2ZmNWd3lWVDk1K25KOTloVzI2WU10MTVWWnNBZktvZERQQ3BuU0pFRDA1b3hXRUFvQk9wa1RDeEN0bWh3UTU5dFhvRlZYaVJmdi9iMm5wOEZ0OFRrRzEzREJuWXg1N05BQWhBY3dZK3pWMk9Qbkdqckw5dGtqdk9JaGNVcU9OWG1ZRXBlUHVEVStzcWpoU0oxMnNrcDFVcGZxYW1yeXh0SUZ5d2hwaDdWdDh5UkFVeVdsQ0xmRVFFd2ZSVGlWUENBL0VYc2ZBaG9PRnVZc1ArekhMcUxKaDhKam1lbU9sdUdjenhEck5iRjNoVmF1RnY2clZxYi9Pb2duZkRLV3FpTmE=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -25,11 +25,11 @@ MonoBehaviour:
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
-    eyewearType: 2
+    eyewearType: 0
     stereoFramework: 0
     seeThroughConfiguration: 0
-    viewerName: Cardboard v1
-    viewerManufacturer: Google
+    viewerName: 
+    viewerManufacturer: 
     useCustomViewer: 0
     customViewer:
       Version: 0
@@ -48,9 +48,8 @@ MonoBehaviour:
   videoBackground:
     clippingMode: 0
     numDivisions: 2
-    videoBackgroundShader: {fileID: 4800000, guid: f40623b353e2f1943b1b3ba42975db7a,
-      type: 3}
-    matteShader: {fileID: 4800000, guid: 66d0d78a3000021448b598bb54a3bfdf, type: 3}
+    videoBackgroundShader: {fileID: 0}
+    matteShader: {fileID: 0}
     videoBackgroundEnabled: 1
   deviceTracker:
     autoInitTracker: 0

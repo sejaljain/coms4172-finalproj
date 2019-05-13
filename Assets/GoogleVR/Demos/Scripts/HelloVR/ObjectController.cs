@@ -99,7 +99,9 @@ namespace GoogleVR.HelloVR
             return ScoreNum;
         }
 
-
+	void OnCollisionEnter(Collision col) {
+	    UpdateScore();
+	}
 
         /// <summary>Sets this instance's GazedAt state.</summary>
         /// <param name="gazedAt">

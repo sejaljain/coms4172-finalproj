@@ -16,7 +16,7 @@ public class ImageAnchor : MonoBehaviour
     private GameObject imageAnchorGO;
 
     public Camera mainCam;
-
+    
     // Use this for initialization
     void Start()
     {
@@ -52,7 +52,7 @@ public class ImageAnchor : MonoBehaviour
                 }
                 //imageAnchorGO.transform.position = UnityARMatrixOps.GetPosition(arImageAnchor.transform);
                 //imageAnchorGO.transform.rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
-                imageAnchorGO.transform.position = (mainCam.transform.position + UnityARMatrixOps.GetPosition(arImageAnchor.transform))/2 + mainCam.transform.forward;
+                imageAnchorGO.transform.position = 0.2f*mainCam.transform.position + 0.8f*UnityARMatrixOps.GetPosition(arImageAnchor.transform) + 1.5f*mainCam.transform.forward;
             }
             else if (imageAnchorGO.activeSelf)
             {

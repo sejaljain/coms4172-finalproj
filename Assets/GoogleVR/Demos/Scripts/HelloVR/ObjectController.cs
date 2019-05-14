@@ -38,6 +38,8 @@ namespace GoogleVR.HelloVR
         /// <summary>The material to use when this object is active (gazed at).</summary>
         public Material inactiveMaterial;
 
+ 
+
         private Vector3 startingPosition;
 
         //private GameObject panel;
@@ -152,6 +154,21 @@ namespace GoogleVR.HelloVR
             GameObject.Find("Score").GetComponent<Text>().text = String.Concat("Calories Captured: ", scoreTotal.ToString());
             GameObject.Find("Pounds").GetComponent<Text>().text = String.Concat("Pounds of Food: ", totalPounds.ToString());
         }
+
+        //public void followPlayer()
+        //{
+        //    gameObject.transform.position = GameObject.Find("Player").transform.forward;
+        //}
+
+        //public void dropCorn()
+        //{
+        //    //gameObject.transform.position = GameObject.Find("Crate1").transform.position;
+        //    scoreTotal += Int32.Parse(GetScoreNum(gameObject.name));
+        //    totalPounds += 0.22;
+        //    GameObject.Find("Score").GetComponent<Text>().text = String.Concat("Calories Captured: ", scoreTotal.ToString());
+        //    GameObject.Find("Pounds").GetComponent<Text>().text = String.Concat("Pounds of Food: ", totalPounds.ToString());
+
+        //}
 
         private void Start()
         {

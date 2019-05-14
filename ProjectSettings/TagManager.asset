@@ -6,6 +6,9 @@ TagManager:
   tags:
   - hotspot
   - minimap
+  - basket
+  - corn
+  - planter
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - 
   - PostProcessing
   - Hotspots
-  - 
-  - 
+  - Model
+  - Layer
   - 
   - 
   - 

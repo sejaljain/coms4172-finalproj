@@ -52,7 +52,14 @@ public class ImageAnchor : MonoBehaviour
                 }
                 //imageAnchorGO.transform.position = UnityARMatrixOps.GetPosition(arImageAnchor.transform);
                 //imageAnchorGO.transform.rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
-                imageAnchorGO.transform.position = (mainCam.transform.position + UnityARMatrixOps.GetPosition(arImageAnchor.transform))/2 + mainCam.transform.forward;
+                imageAnchorGO.transform.position = 0.2f * mainCam.transform.position + 0.8f * UnityARMatrixOps.GetPosition(arImageAnchor.transform) + 1.5f* mainCam.transform.forward;
+
+                Debug.Log("Camera position:");
+                Debug.Log(mainCam.transform.position);
+                Debug.Log("Image target position: ");
+                Debug.Log(UnityARMatrixOps.GetPosition(arImageAnchor.transform));
+                Debug.Log("Ball position:");
+                Debug.Log(imageAnchorGO.transform.position);
             }
             else if (imageAnchorGO.activeSelf)
             {

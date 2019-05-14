@@ -20,7 +20,7 @@ public class Rotation : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && planter_selected)
+        if (Input.GetMouseButton(0) && planter_selected)
         {
             // calculate current distance between A and B
             float currentDistance = Vector3.Distance(transform.position, selectedPlanter.transform.position);

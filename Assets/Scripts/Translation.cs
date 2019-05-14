@@ -16,7 +16,7 @@ public class Translation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && corn_selected)
+        if (Input.GetMouseButton(0) && corn_selected)
         {
             selectedCorn.transform.position = transform.position;
         }

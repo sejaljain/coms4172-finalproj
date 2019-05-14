@@ -17,7 +17,7 @@ public class Scaling : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && basket_selected)
+        if (Input.GetMouseButton(0) && basket_selected)
         {
             float dist = Vector3.Distance(selectedBasket.transform.position, transform.position);
             selectedBasket.transform.localScale = new Vector3(dist, dist, dist);

@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GoogleVR.HelloVR;
 using UnityEngine;
 
 public class Translation : MonoBehaviour
 {
     // Start is called before the first frame update
-    Transform selectedCorn;
+    GameObject selectedCorn;
     bool corn_selected;
     GameObject[] baskets;
+
     void Start()
     {
         corn_selected = false;
@@ -34,18 +36,23 @@ public class Translation : MonoBehaviour
                 if (inBasket)
                 {
                     selectedCorn.GetComponent<Renderer>().material.color = Color.green;
+                    selectedCorn.GetComponent<ObjectController>().UpdateScore();
+
+
                     Debug.Log("score up");
                     // up the score
                 }
             }
+
+            corn_selected = false;
+            selectedCorn = null;
 
             if (!inBasket)
             {
                 Destroy(selectedCorn);
             }
 
-            corn_selected = false;
-            selectedCorn = null;
+
 
         }
 
@@ -56,7 +63,7 @@ public class Translation : MonoBehaviour
     {
         if (other.tag == "corn")
         {
-            selectedCorn = other.transform;
+            selectedCorn = other.gameObject;
             corn_selected = true;
             other.GetComponent<Renderer>().material.color = Color.red;
         }

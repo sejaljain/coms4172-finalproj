@@ -22,14 +22,11 @@ public class Rotation : MonoBehaviour
 
         if (Input.GetMouseButton(0) && planter_selected)
         {
-            // calculate current distance between A and B
-            float currentDistance = Vector3.Distance(transform.position, selectedPlanter.transform.position);
+            float dist = Vector3.Distance(selectedPlanter.transform.position, transform.position);
 
-            // find the ratio between initial dist and current dist between A and B
-            float t = currentDistance / initialDistance;
+            Vector3 center = selectedPlanter.GetComponent<Renderer>().bounds.center;
+            transform.RotateAround(center, Vector3.up, dist * Time.deltaTime);
 
-            // Lerp rotation according to ratio
-            selectedPlanter.transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, t);
         }
     }
 

@@ -112,7 +112,7 @@ namespace GoogleVR.HelloVR
             }
         }
 
-        /// <summary>Resets this instance and its siblings to their starting positions.</summary>
+        /// Resets this instance and its siblings to their starting positions.
         public void Reset()
         {
             int sibIdx = transform.GetSiblingIndex();

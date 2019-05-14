@@ -41,6 +41,8 @@ public class Scaling : MonoBehaviour
         {
             selectedBasket = null;
             basket_selected = false;
+            other.GetComponent<Renderer>().material.color = Color.white;
+
         }
     }
 

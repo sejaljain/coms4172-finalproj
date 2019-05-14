@@ -50,17 +50,18 @@ namespace GoogleVR.HelloVR
         private int scoreTotal = 0;
         private double totalPounds = 0.00;
 
+        private string[,] plants = new string[,] {{"Tomato", "18 Calories(per 100 g)", "18"} ,
+            {"Corn", "86 Calories(per 100 g", "86"} ,
+            {"Turnip","28 Calories(per 100 g)","28" },{ "Carrot","41 Calories(per 100 g)","41"} ,
+            {"Eggplant","24 Calories(per 100 g)","24"} ,{ "Pumpkin","25 Calories(per 100g)","25"}  };
+
         public string GetPlantCals(string plant)
         {
-            string path = "Assets/plantDatabase.txt";
-            StreamReader reader = new StreamReader(path);
-            while (!reader.EndOfStream)
+            for (int i = 0; i < 6; i++)
             {
-                string line = reader.ReadLine();
-                List<string> info = line.Split(',').ToList<string>();
-                if (plant.Contains(info[0]))
+                if (plant.Contains(plants[i, 0]))
                 {
-                    plantCals = info[1];
+                    plantCals = plants[i, 1];
                 }
             }
             return plantCals;
@@ -69,15 +70,11 @@ namespace GoogleVR.HelloVR
 
         public string GetPlantName(string plant)
         {
-            string path = "Assets/plantDatabase.txt";
-            StreamReader reader = new StreamReader(path);
-            while (!reader.EndOfStream)
+            for (int i = 0; i < 6; i++)
             {
-                string line = reader.ReadLine();
-                List<string> info = line.Split(',').ToList<string>();
-                if (plant.Contains(info[0]))
+                if (plant.Contains(plants[i, 0]))
                 {
-                    plantName = info[0];
+                    plantName = plants[i, 0];
                 }
             }
             return plantName;
@@ -85,17 +82,14 @@ namespace GoogleVR.HelloVR
 
         public string GetScoreNum(string plant)
         {
-            string path = "Assets/plantDatabase.txt";
-            StreamReader reader = new StreamReader(path);
-            while (!reader.EndOfStream)
+            for (int i = 0; i < 6; i++)
             {
-                string line = reader.ReadLine();
-                List<string> info = line.Split(',').ToList<string>();
-                if (plant.Contains(info[0]))
+                if (plant.Contains(plants[i, 0]))
                 {
-                    ScoreNum = info[2];
+                    ScoreNum = plants[i, 2];
                 }
             }
+        
             return ScoreNum;
         }
 
